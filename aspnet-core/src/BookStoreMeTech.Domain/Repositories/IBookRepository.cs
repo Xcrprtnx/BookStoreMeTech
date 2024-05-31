@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using BookStoreMeTech.Entities;
-using BookStoreMeTech.Domain.Entities;
 
 namespace BookStoreMeTech.Domain.Repositories
 {
