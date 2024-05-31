@@ -1,0 +1,67 @@
+# .NET Core
+*.swp
+*.swo
+*.bak
+*.log
+*.tlog
+*.vspscc
+*.vssscc
+.vscode/
+.idea/
+.project
+*.csproj.user
+*.userosscache
+*.userprefs
+*.dbmdl
+*.jfm
+*.pdb
+*.opendb
+*.suo
+*.sln
+*.htm
+*.html
+*.cache
+*.docstates
+*.[Ll]og
+[Tt]est[Rr]esult*
+[Ee]rror[Rr]eport*
+[Ee]rrors.txt
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+[Pp]ublish/
+
+# Angular
+node_modules/
+dist/
+npm-debug.log
+yarn-error.log
+coverage/
+angular.json
+.vscode/
+.idea/
+.sass-cache/
+.tmp/
+*.log
+*.tsbuildinfo
+.DS_Store
+
+# Environment variables
+.env
+
+# Swagger
+swagger/
+
+# OS specific
+Thumbs.db
+.DS_Store
+
+# Editor specific
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
