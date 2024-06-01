@@ -28,7 +28,7 @@ namespace BookStoreMeTech.Application.Services
         public async Task<List<UserDto>> GetListAsync()
         {
             var users = await _userRepository.GetListAsync();
-            return ObjectMapper.Map<List<User, List<UserDto>>>(users);
+            return ObjectMapper.Map<List<User>, List<UserDto>>(users);
         }
 
         public async Task<UserDto> CreateAsync(UserCreateUpdateDto input)
