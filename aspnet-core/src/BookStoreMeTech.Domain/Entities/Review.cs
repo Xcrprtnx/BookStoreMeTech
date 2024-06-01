@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Volo.Abp.Domain.Entities.Auditing;
 
-namespace BookStoreMeTech
+namespace BookStoreMeTech.Entities
 {
     public class Review : AuditedEntity<Guid>
     {

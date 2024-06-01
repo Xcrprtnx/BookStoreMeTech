@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Volo.Abp.Domain.Entities.Auditing;
 
-namespace BookStoreMeTech
+namespace BookStoreMeTech.Entities
 {
     public class Book : AuditedAggregateRoot<Guid>
     {
@@ -13,7 +13,7 @@ namespace BookStoreMeTech
         public double AverageRating { get; set; }
         public ICollection<Review> Reviews { get; set; }
 
-        
+
         public Book()
         {
             Reviews = new List<Review>();
