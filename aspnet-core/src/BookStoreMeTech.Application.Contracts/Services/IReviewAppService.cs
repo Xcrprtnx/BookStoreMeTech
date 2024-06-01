@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace MyProBookStoreMeTech.Application.Contracts.Services
+namespace BookStoreMeTech.Application.Contracts.Services
 {
     public interface IReviewAppService
     {
