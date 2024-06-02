@@ -27,7 +27,8 @@ namespace BookStoreMeTech.Application.Services
         public async Task<List<ReviewDto>> GetListAsync()
         {
             var reviews = await _reviewRepository.GetListAsync();
-            return ObjectMapper.Map<List<Review, List<ReviewDto>>>(reviews);
+            return ObjectMapper.Map<List<Review>, List<ReviewDto>>(reviews);
+
         }
 
         public async Task<ReviewDto> CreateAsync(ReviewCreateUpdateDto input)

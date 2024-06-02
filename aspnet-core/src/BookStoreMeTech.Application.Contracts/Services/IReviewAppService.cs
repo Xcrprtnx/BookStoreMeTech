@@ -1,16 +1,17 @@
-﻿using BookStoreMeTech.Application.Contracts.Dtos;
+﻿using Volo.Abp.Application.Services;
 using System;
-using System.Collections.Generic;
+using BookStoreMeTech.Application.Contracts.Dtos;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace BookStoreMeTech.Application.Contracts.Services
 {
-    public interface IReviewAppService
+    public interface IReviewAppService : IApplicationService
     {
-        Task<List<ReviewDto>> GetListAsync(Guid bookId);
         Task<ReviewDto> GetAsync(Guid id);
-        Task<ReviewDto> CreateAsync(ReviewDto input);
-        Task<ReviewDto> UpdateAsync(Guid id, ReviewDto input);
+        Task<List<ReviewDto>> GetListAsync();
+        Task<ReviewDto> CreateAsync(ReviewCreateUpdateDto input);
+        Task<ReviewDto> UpdateAsync(Guid id, ReviewCreateUpdateDto input);
         Task DeleteAsync(Guid id);
     }
 }
