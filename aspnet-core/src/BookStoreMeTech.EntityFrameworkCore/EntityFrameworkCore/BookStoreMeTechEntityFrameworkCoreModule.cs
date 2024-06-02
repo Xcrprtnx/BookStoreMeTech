@@ -47,7 +47,7 @@ public class BookStoreMeTechEntityFrameworkCoreModule : AbpModule
         {
                 /* The main point to change your DBMS.
                  * See also BookStoreMeTechMigrationsDbContextFactory for EF Core tooling. */
-            options.UseSqlServer();
+            options.UseNpgsql();
         });
 
     }

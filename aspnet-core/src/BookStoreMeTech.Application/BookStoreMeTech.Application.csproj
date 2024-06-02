@@ -11,6 +11,7 @@
   <ItemGroup>
     <ProjectReference Include="..\BookStoreMeTech.Domain\BookStoreMeTech.Domain.csproj" />
     <ProjectReference Include="..\BookStoreMeTech.Application.Contracts\BookStoreMeTech.Application.Contracts.csproj" />
+    <ProjectReference Include="..\BookStoreMeTech.EntityFrameworkCore\BookStoreMeTech.EntityFrameworkCore.csproj" />
   </ItemGroup>
 
   <ItemGroup>
