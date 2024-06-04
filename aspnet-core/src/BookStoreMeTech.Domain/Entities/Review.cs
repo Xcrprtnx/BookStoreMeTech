@@ -10,10 +10,10 @@ namespace BookStoreMeTech.Entities
     public class Review : AuditedEntity<Guid>
     {
         public Guid BookId { get; set; }
-        public Book Book { get; set; }
+        public Book? Book { get; set; }
 
         public Guid UserId { get; set; }
-        public User User { get; set; }
+        public User? User { get; set; }
 
         public string Comment { get; set; }
         public int Rating { get; set; }

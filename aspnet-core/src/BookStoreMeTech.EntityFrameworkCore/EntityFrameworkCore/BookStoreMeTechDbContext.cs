@@ -1,5 +1,6 @@
 ﻿using BookStoreMeTech.Entities;
 using Microsoft.EntityFrameworkCore;
+using System;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
 using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
 using Volo.Abp.Data;
@@ -11,6 +12,7 @@ using Volo.Abp.OpenIddict.EntityFrameworkCore;
 using Volo.Abp.PermissionManagement.EntityFrameworkCore;
 using Volo.Abp.SettingManagement.EntityFrameworkCore;
 using Volo.Abp.TenantManagement.EntityFrameworkCore;
+
 
 namespace BookStoreMeTech.EntityFrameworkCore
 {
@@ -36,8 +38,6 @@ namespace BookStoreMeTech.EntityFrameworkCore
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-            builder.Entity<Book>(b => { b.ToTable("Books"); });
-            builder.Entity<Review>(b => { b.ToTable("Reviews"); });
 
             builder.ConfigurePermissionManagement();
             builder.ConfigureSettingManagement();
@@ -47,6 +47,69 @@ namespace BookStoreMeTech.EntityFrameworkCore
             builder.ConfigureOpenIddict();
             builder.ConfigureFeatureManagement();
             builder.ConfigureTenantManagement();
+
+            builder.Entity<Book>(b =>
+            {
+                b.ToTable("Books");
+                b.Property(x => x.Title)
+                    .HasMaxLength(255)
+                    .IsRequired();
+
+                b.Property(x => x.Price)
+                    .HasColumnType("decimal(18,2)");
+
+                
+                b.HasMany(x => x.Reviews)
+                    .WithOne(r => r.Book)
+                    .HasForeignKey(r => r.BookId)
+                    .OnDelete(DeleteBehavior.NoAction);
+
+                b.Property(e => e.Id).ValueGeneratedOnAdd();
+            });
+
+            builder.Entity<Review>(b =>
+            {
+                b.ToTable("Reviews");
+                b.Property(x => x.Rating)
+                    .IsRequired();
+                b.Property(e => e.Id).ValueGeneratedOnAdd();
+
+                
+                b.HasOne(r => r.Book)
+                    .WithMany(b => b.Reviews)
+                    .HasForeignKey(r => r.BookId)
+                    .OnDelete(DeleteBehavior.NoAction);
+
+                b.HasOne(r => r.User)
+                    .WithMany(u => u.Reviews)
+                    .HasForeignKey(r => r.UserId)
+                    .OnDelete(DeleteBehavior.NoAction);
+            });
+
+            builder.Entity<User>(b =>
+            {
+                b.ToTable("Users");
+                b.Property(x => x.Name)
+                    .HasMaxLength(255)
+                    .IsRequired();
+
+                b.Property(x => x.Email)
+                    .HasMaxLength(255)
+                    .IsRequired();
+
+                b.Property(x => x.Password)
+                    .HasMaxLength(255)
+                    .IsRequired();
+
+                b.HasMany(x => x.Reviews)
+                    .WithOne(r => r.User)
+                    .HasForeignKey(r => r.UserId)
+                    .OnDelete(DeleteBehavior.NoAction);
+
+                b.Property(e => e.Id).ValueGeneratedOnAdd();
+
+                b.HasQueryFilter(u => !u.IsDeleted);
+            });
         }
     }
 }

@@ -17,7 +17,7 @@ public class BookStoreMeTechDbContextFactory : IDesignTimeDbContextFactory<BookS
         var configuration = BuildConfiguration();
 
         var builder = new DbContextOptionsBuilder<BookStoreMeTechDbContext>()
-            .UseSqlServer(configuration.GetConnectionString("Default"));
+            .UseNpgsql(configuration.GetConnectionString("Default"));
 
         return new BookStoreMeTechDbContext(builder.Options);
     }
